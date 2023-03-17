@@ -1,13 +1,15 @@
 <section 
-class="upload__file" 
-(dragover)="dragOver($event)"
-(dragleave)="dragLeave($event)"
-(drop)="read($event)"
-[ngClass]="{otro : isDrag}">
+    class="upload__file" 
+    (dragover)="dragOver($event)" 
+    (dragleave)="dragLeave($event)" 
+    (drop)="dropFile($event)"
+    [ngClass]="{'otro' : isDrag, 'error' : isError }">
+
     <p class="medium__text">Drag your file here</p>
     <p class="large__text">Or</p>
 
     <div class="file-select">
-        <input type="file"(change)="onFileSelected($event)">
+        <input type="file" (change)="onFileSelected($event)">
     </div>
+    <span [ngClass]="{'spanError' : isError }">This is not a .csv file. Please try another</span>
 </section>

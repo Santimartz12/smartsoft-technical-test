@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { DataService } from 'src/app/shared/services/data.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -6,8 +7,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent {
-
+  
   isDrag: boolean = false;
+  isError: boolean = false;
+
+  constructor(
+    private dataService: DataService,
+  ) {}
 
   dragOver(event: any) {
     event.preventDefault();
@@ -21,13 +27,25 @@ export class DashboardComponent {
 
   onFileSelected(event: any) {
     const file: File = event.target.files[0];
-    console.log(file);
+    this.validateFile(file);
   }
 
-  read(event: any) {
+  dropFile(event: any) {
     event.preventDefault();
     this.isDrag = false;
-    const files = event.dataTransfer.files[0];
-    console.log(files);
+    const file = event.dataTransfer.files[0];
+    this.validateFile(file);
   }
+
+  validateFile(file: File){
+    if (file.type != 'text/csv') {
+      console.error('This is not a .csv file');
+      this.isError = true;
+      return;
+    }
+
+    this.isError = false;
+    this.dataService.readFile(file);
+  }
+
 }

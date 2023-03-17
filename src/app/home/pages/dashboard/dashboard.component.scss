@@ -76,8 +76,28 @@
 
     }
 
+    span{
+        width: 50%;
+        font-size: 1.2rem;
+        font-family: $primary__font;
+        color: transparent;
+        font-weight: 600;
+        transition: all 300ms;
+        text-align: center;
+    }
+
+    .spanError{
+        color: $error__text__color;
+    }
 }
 
 .otro {
     background: $dark__color;
 }
+
+.error{
+    background: radial-gradient(circle,
+    $error__color 0%,
+    $error__dark__color 100%);
+}
+
