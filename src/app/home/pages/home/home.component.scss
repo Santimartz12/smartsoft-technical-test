@@ -1,0 +1,17 @@
+div {
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    grid-template-columns: 1fr;
+
+    app-header {
+        grid-column: 1 / 2;
+        /* Ubica en la primera columna */
+    }
+
+    router-outlet {
+        grid-column: 2 / 3;
+        /* Ubica en la segunda columna */
+    }
+}

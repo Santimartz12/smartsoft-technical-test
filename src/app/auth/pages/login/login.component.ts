@@ -15,8 +15,10 @@ export class LoginComponent {
   ) { }
 
   myForm: FormGroup = this.fb.group({
-    username: ['', [Validators.required]],
-    password: ['', [Validators.required, Validators.minLength(6)]],
+
+    // TODO: Erase all these values;
+    username: ['1234567890', [Validators.required]],
+    password: ['1234567890', [Validators.required, Validators.minLength(6)]],
   })
 
   dashboardRedirect() {

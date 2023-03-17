@@ -1,1 +1,13 @@
-<p>dashboard works!</p>
+<section 
+class="upload__file" 
+(dragover)="dragOver($event)"
+(dragleave)="dragLeave($event)"
+(drop)="read($event)"
+[ngClass]="{otro : isDrag}">
+    <p class="medium__text">Drag your file here</p>
+    <p class="large__text">Or</p>
+
+    <div class="file-select">
+        <input type="file"(change)="onFileSelected($event)">
+    </div>
+</section>

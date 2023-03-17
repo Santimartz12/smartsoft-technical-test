@@ -1,0 +1,26 @@
+@import '../../../../variables.scss';
+
+header {
+    display: flex;
+    background-color: $light__color;
+    align-items: center;
+    padding: 20px;
+    gap: 15px;
+    justify-content: space-between;
+    box-sizing: border-box;
+    -webkit-box-shadow: 0px 5px 19px 0px $primary__shadow__color;
+    -moz-box-shadow: 0px 5px 19px 0px $primary__shadow__color;
+    box-shadow: 0px 5px 19px 0px $primary__shadow__color;
+
+    p{
+        font-family: $primary__font;
+        font-size: 20px;
+        font-weight: 500;
+        width: 70%;
+    }
+
+    .btn__container{
+        width: 110px;
+    }
+
+}

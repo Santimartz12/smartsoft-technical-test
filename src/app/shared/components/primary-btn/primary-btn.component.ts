@@ -7,6 +7,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class PrimaryBtnComponent {
 
+  @Input('small') small = false;
   @Input('text') text = '';
   @Output() onClickFunction: EventEmitter<any> = new EventEmitter();
 

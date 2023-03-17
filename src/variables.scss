@@ -38,3 +38,8 @@ $primary__font: 'Montserrat', sans-serif;
         font-family: $primary__font;
     }
 }
+
+@mixin light__text{
+    font-family: $primary__font;
+    color: $light__color;
+}

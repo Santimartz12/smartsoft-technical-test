@@ -1,1 +1,5 @@
-<button (click)="executeFunction()">{{text}}</button>
+<button 
+(click)="executeFunction()" 
+[ngClass]="{small : small}">
+{{text}}
+</button>
