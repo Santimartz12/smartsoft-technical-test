@@ -4,6 +4,7 @@ $primary__shadow__color: #06404857;
 $light__color: #ffffff;
 $shadow__color: #efefef;
 $text__primary__color: #000000;
+$error__text__color: #ff0000;
 
 
 $primary__font: 'Montserrat', sans-serif;
@@ -31,6 +32,7 @@ $primary__font: 'Montserrat', sans-serif;
     border: none;
     background-color: $shadow__color;
     border-radius: 15px;
+    font-family: $primary__font;
 
     &::placeholder{
         font-family: $primary__font;

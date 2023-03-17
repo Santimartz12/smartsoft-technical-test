@@ -15,12 +15,21 @@ export class LoginComponent {
   ) { }
 
   myForm: FormGroup = this.fb.group({
-    email: ['', [Validators.required, Validators.email]],
+    username: ['', [Validators.required]],
     password: ['', [Validators.required, Validators.minLength(6)]],
   })
 
   dashboardRedirect() {
+    if (this.myForm.invalid) {
+      this.myForm.markAllAsTouched();
+      return;
+    }
+
     this.router.navigate(['dashboard']);
+  }
+
+  validateInput(field: String) {
+    return (this.myForm.controls[`${field}`].errors && this.myForm.controls[`${field}`].touched)
   }
 
 }

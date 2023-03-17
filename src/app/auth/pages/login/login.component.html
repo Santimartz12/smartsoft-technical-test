@@ -4,11 +4,26 @@
     <div class="form__container">
         <h3 class="form_title">Login</h3>
 
-        <form>
+        <form [formGroup]="myForm">
             <label for="username">Username</label>
-            <input type="text" placeholder="Username" id="username" name="username">
+            <input 
+            type="text" 
+            placeholder="Username" 
+            id="username" name="username"
+            formControlName="username"
+            >
+            <span *ngIf="validateInput('username')">
+                The username is required
+            </span>
             <label for="username">Password</label>
-            <input type="password" placeholder="********">
+            <input 
+            type="password" 
+            formControlName="password" 
+            placeholder="********"
+            >
+            <span *ngIf="validateInput('password')">
+                A password longer than 6 characters is required
+            </span>
         </form>
         <div class="btn__container">
             <app-primary-btn text="Log In" (onClickFunction)="dashboardRedirect()"></app-primary-btn>
