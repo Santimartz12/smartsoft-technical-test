@@ -1,1 +1,18 @@
-<p>login works!</p>
+<section class="login">
+    <span class="login__background"></span>
+
+    <div class="form__container">
+        <h3 class="form_title">Login</h3>
+
+        <form>
+            <label for="username">Username</label>
+            <input type="text" placeholder="Username" id="username" name="username">
+            <label for="username">Password</label>
+            <input type="password" placeholder="********">
+        </form>
+        <div class="btn__container">
+            <app-primary-btn text="Log In" (onClickFunction)="dashboardRedirect()"></app-primary-btn>
+        </div>
+    </div>
+</section>
+

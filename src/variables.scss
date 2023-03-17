@@ -1,0 +1,38 @@
+$primary__color: #0a6470;
+$dark__color: #032c31;
+$primary__shadow__color: #06404857;
+$light__color: #ffffff;
+$shadow__color: #efefef;
+$text__primary__color: #000000;
+
+
+$primary__font: 'Montserrat', sans-serif;
+
+
+@mixin title__style {
+    color: $primary__color;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-family: $primary__font;
+    font-size: 30px;
+}
+
+@mixin label__form__style {
+    margin-bottom: 5px;
+    color: $primary__color;
+    font-family: $primary__font;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+@mixin input__style{
+    padding: 10px 20px;
+    outline: none;
+    border: none;
+    background-color: $shadow__color;
+    border-radius: 15px;
+
+    &::placeholder{
+        font-family: $primary__font;
+    }
+}
