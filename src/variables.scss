@@ -45,3 +45,16 @@ $primary__font: 'Montserrat', sans-serif;
     font-family: $primary__font;
     color: $light__color;
 }
+
+@mixin heading2__style{
+    text-align: center;
+    font-family: $primary__font;
+}
+
+@mixin title__State{
+    box-sizing: border-box;
+    vertical-align: middle;
+    font-family: $primary__font;
+    font-size: 20px;
+    font-weight: 600;
+}

@@ -21,7 +21,6 @@ export class ResultsComponent implements OnInit {
   ngOnInit(): void {
 
     this.data = this.dataServices.getResults();
-    console.log(this.data);
 
   }
 }

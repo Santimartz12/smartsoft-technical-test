@@ -1,0 +1,123 @@
+@import '../../../../variables.scss';
+
+.results{
+    width:  100%;
+    max-width: 700px;
+    box-sizing:border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .data__container{
+        padding: 50px 20px;
+        display: flex;
+        flex-direction: column;
+        align-self: center;
+        justify-content: center;
+    }
+
+    h2{
+        @include heading2__style;
+    }
+
+    .date{
+        text-align: center;
+        font-family: $primary__font;
+        font-weight: 700;
+        font-size: 35px;
+        color: $text__primary__color;
+    }
+
+    .answers__container{
+        margin-top: 25px;
+        width: 100%;
+
+        .question{
+            @include heading2__style;
+            font-size: 15px;
+            margin-bottom: 5px;
+        }
+    
+        .state-affected__container{
+            border-radius: 15px;
+            background-color: $shadow__color;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            p:first-child{
+                margin: 25px;
+                @include title__State;
+            }
+
+            p:nth-child(2){
+                color: white;
+                font-family: $primary__font;
+                width: 100%;
+                text-align: center;
+                padding: 20px;
+                box-sizing: border-box;
+                border-radius: 0 0 14px 14px;
+                background: $dark__color;
+            }
+
+        }
+        
+        .information__container{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            background-color: $shadow__color;
+            border-radius: 15px;
+    
+            .state{
+                width: 65%;
+                padding:  0 20px 0 20px;
+                @include title__State;
+            }
+    
+            .deaths__container{
+                border-radius: 0 15px 15px 0;
+                padding: 15px 0;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                width: 35%;
+                height: 100%;
+                background: $dark__color;
+    
+                p{
+                    color: $light__color;
+                    font-family: $primary__font;
+                }
+    
+                p:first-child{
+                    font-size: 25px;
+                    font-weight: bold;
+                }
+    
+            }
+            
+        }
+
+    }
+
+
+    .graphs__container{
+        border-radius: 20px 20px 0 0;
+        width: 100%;
+        height: 500px;
+        background-color: $shadow__color;
+
+        h2{
+            margin: 25px auto;
+            @include title__style;
+        }
+
+    }
+
+}

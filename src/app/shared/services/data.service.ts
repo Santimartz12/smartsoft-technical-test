@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import * as csvtojson from 'csvtojson';
 import { State } from 'src/app/interfaces/state.interfaces';
+import { StorageService } from './storage.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,8 @@ import { State } from 'src/app/interfaces/state.interfaces';
 export class DataService {
 
   constructor(
-    private router: Router
+    private router: Router,
+    private stgService: StorageService,
   ) { 
   }
 
@@ -31,16 +33,8 @@ export class DataService {
     };
     
   }
-  
-  async csvToJson(csvData: string): Promise<any> {
-    return await csvtojson().fromString(csvData);
-  }
-  
-  getData(){
-    return this._data;
-  }
 
-  getResults() : State[] {
+  processResults() : State[] {
 
     const lastIndex: number = this._data.length - 1;
     const lastKey = Object.keys(this._data[lastIndex])[Object.keys(this._data[lastIndex]).length - 1]
@@ -79,7 +73,26 @@ export class DataService {
     
     }
 
+    this.stgService.saveInStorage('results', this._results);
     return this._results;
+  }
+  
+  async csvToJson(csvData: string): Promise<any> {
+    return await csvtojson().fromString(csvData);
+  }
+
+  getData(){
+    return this._data;
+  }
+
+  getResults() : State[] {
+
+    if(this.stgService.loadInStorage('results') != null){
+      return this.stgService.loadInStorage('results');
+    }else{
+      return this.processResults();
+    }
+    
   }
 
 }
