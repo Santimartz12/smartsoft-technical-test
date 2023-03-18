@@ -31,7 +31,7 @@
     align-items: center;
 
     .data__container {
-        padding: 50px 20px;
+        padding: 40px 20px;
         display: flex;
         flex-direction: column;
         align-self: center;
@@ -82,6 +82,13 @@
                 box-sizing: border-box;
                 border-radius: 0 0 14px 14px;
                 background: $dark__color;
+                line-height: 1.2rem;
+            }
+
+            span{
+                line-height: 3rem;
+                font-weight: bold;
+                font-size: 30px;
             }
 
         }

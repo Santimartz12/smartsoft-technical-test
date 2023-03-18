@@ -58,7 +58,7 @@ export class ResultsComponent implements OnInit {
       }
 
       const affected = this.data[this.mostAffectedState];
-      if((deaths* 100) / population > (affected.deaths * 100) / affected.population){
+      if((deaths* 100) / population > (affected.deaths * 100) / affected.population && population > 0){
         this.mostAffectedState = index;
       }
     })
