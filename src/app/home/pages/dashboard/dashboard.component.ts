@@ -38,7 +38,7 @@ export class DashboardComponent {
   }
 
   validateFile(file: File){
-    if (file.type != 'text/csv') {
+    if (!file.name.endsWith('.csv')) {
       console.error('This is not a .csv file');
       this.isError = true;
       return;

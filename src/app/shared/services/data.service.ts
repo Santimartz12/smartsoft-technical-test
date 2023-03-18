@@ -12,20 +12,23 @@ export class DataService {
   ) { 
   }
 
-  data = [];
+  private _data = [];
 
   readFile(file: File) {
-    
+
     const reader = new FileReader();
     reader.readAsText(file);
     reader.onload = async () => {
       const csvData: string = reader.result!.toString();
       const json = await this.csvToJson(csvData);
-      this.data = json;
-      console.log(this.data);
+      this._data = json;
       this.router.navigate(['results']);
     };
 
+  }
+
+  getData(){
+    return this._data;
   }
 
   async csvToJson(csvData: string): Promise<any> {
