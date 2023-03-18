@@ -8,7 +8,7 @@ export class StorageService {
 
   constructor() { }
 
-  saveInStorage(key: string, data: State[] | []) {
+  saveInStorage(key: string, data: State[] | string) {
     localStorage.setItem(key, JSON.stringify(data));
   }
 

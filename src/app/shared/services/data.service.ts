@@ -12,11 +12,11 @@ export class DataService {
   constructor(
     private router: Router,
     private stgService: StorageService,
-  ) { 
+  ) {
   }
 
   private _data = [];
-  private _results : State[] = [];
+  private _results: State[] = [];
   private _provinceState: String[] = [];
   private _populationCount: number[] = [];
   private _deathsCount: number[] = [];
@@ -29,12 +29,13 @@ export class DataService {
       const csvData: string = reader.result!.toString();
       const json = await this.csvToJson(csvData);
       this._data = json;
+      this.processResults();
       this.router.navigate(['results']);
     };
-    
+
   }
 
-  processResults() : State[] {
+  processResults(): State[] {
 
     const lastIndex: number = this._data.length - 1;
     const lastKey = Object.keys(this._data[lastIndex])[Object.keys(this._data[lastIndex]).length - 1]
@@ -61,38 +62,37 @@ export class DataService {
 
     });
 
-    for(let i = 0; i < this._provinceState.length; i++){
-      
-      const state : State = {
+    for (let i = 0; i < this._provinceState.length; i++) {
+
+      const state: State = {
         deaths: this._deathsCount[i],
         population: this._populationCount[i],
         name: this._provinceState[i]
       }
 
-      this._results.push(state);      
-    
+      this._results.push(state);
+
     }
 
     this.stgService.saveInStorage('results', this._results);
     return this._results;
   }
-  
+
   async csvToJson(csvData: string): Promise<any> {
     return await csvtojson().fromString(csvData);
   }
 
-  getData(){
+  getData() {
     return this._data;
   }
 
-  getResults() : State[] {
+  getResults(): State[] {
 
-    if(this.stgService.loadInStorage('results') != null){
+    if (this.stgService.loadInStorage('results') != null) {
       return this.stgService.loadInStorage('results');
-    }else{
+    } else {
       return this.processResults();
     }
-    
   }
 
 }

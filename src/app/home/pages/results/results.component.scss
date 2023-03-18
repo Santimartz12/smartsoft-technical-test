@@ -1,15 +1,36 @@
 @import '../../../../variables.scss';
 
-.results{
-    width:  100%;
+.file-change__container {
+    width: calc(100% - 50px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 25px;
+    background: $dark__color;
+
+    p {
+        text-align: center;
+        margin-bottom: 10px;
+        font-family: $primary__font;
+        color: $light__color;
+    }
+
+    app-primary-btn {
+        width: 100%;
+    }
+}
+
+.results {
+    width: 100%;
     max-width: 700px;
-    box-sizing:border-box;
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 
-    .data__container{
+    .data__container {
         padding: 50px 20px;
         display: flex;
         flex-direction: column;
@@ -17,11 +38,11 @@
         justify-content: center;
     }
 
-    h2{
+    h2 {
         @include heading2__style;
     }
 
-    .date{
+    .date {
         text-align: center;
         font-family: $primary__font;
         font-weight: 700;
@@ -29,17 +50,17 @@
         color: $text__primary__color;
     }
 
-    .answers__container{
+    .answers__container {
         margin-top: 25px;
         width: 100%;
 
-        .question{
+        .question {
             @include heading2__style;
             font-size: 15px;
             margin-bottom: 5px;
         }
-    
-        .state-affected__container{
+
+        .state-affected__container {
             border-radius: 15px;
             background-color: $shadow__color;
             display: flex;
@@ -47,12 +68,12 @@
             justify-content: center;
             align-items: center;
 
-            p:first-child{
+            p:first-child {
                 margin: 25px;
                 @include title__State;
             }
 
-            p:nth-child(2){
+            p:nth-child(2) {
                 color: white;
                 font-family: $primary__font;
                 width: 100%;
@@ -64,22 +85,22 @@
             }
 
         }
-        
-        .information__container{
+
+        .information__container {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 30px;
             background-color: $shadow__color;
             border-radius: 15px;
-    
-            .state{
+
+            .state {
                 width: 65%;
-                padding:  0 20px 0 20px;
+                padding: 0 20px 0 20px;
                 @include title__State;
             }
-    
-            .deaths__container{
+
+            .deaths__container {
                 border-radius: 0 15px 15px 0;
                 padding: 15px 0;
                 display: flex;
@@ -89,31 +110,31 @@
                 width: 35%;
                 height: 100%;
                 background: $dark__color;
-    
-                p{
+
+                p {
                     color: $light__color;
                     font-family: $primary__font;
                 }
-    
-                p:first-child{
+
+                p:first-child {
                     font-size: 25px;
                     font-weight: bold;
                 }
-    
+
             }
-            
+
         }
 
     }
 
 
-    .graphs__container{
+    .graphs__container {
         border-radius: 20px 20px 0 0;
         width: 100%;
         height: 500px;
         background-color: $shadow__color;
 
-        h2{
+        h2 {
             margin: 25px auto;
             @include title__style;
         }
