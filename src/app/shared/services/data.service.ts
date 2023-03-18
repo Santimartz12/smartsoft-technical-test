@@ -16,6 +16,7 @@ export class DataService {
   }
 
   private _data = [];
+  private _lastKey = '';
   private _results: State[] = [];
   private _provinceState: String[] = [];
   private _populationCount: number[] = [];
@@ -30,6 +31,11 @@ export class DataService {
       const json = await this.csvToJson(csvData);
       this._data = json;
       this.processResults();
+
+      //TODO: Join all the data in a single Array (lastKey, fileName, results)
+      const fileData = [file.name, this._lastKey];
+      
+      this.stgService.saveInStorage('fileData', JSON.stringify(fileData));
       this.router.navigate(['results']);
     };
 
@@ -39,6 +45,8 @@ export class DataService {
 
     const lastIndex: number = this._data.length - 1;
     const lastKey = Object.keys(this._data[lastIndex])[Object.keys(this._data[lastIndex]).length - 1]
+
+    this._lastKey = lastKey;
 
     this._data.forEach(st => {
 

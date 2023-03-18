@@ -16,7 +16,7 @@ export class HomeGuard {
 
   resultsValidate(){
     const isData = this.stgService.loadInStorage('results')
-    if(isData != null){
+    if(this.stgService.loadInStorage('results') != null && this.stgService.loadInStorage('fileData') != null){
       return true;
     }
     else{

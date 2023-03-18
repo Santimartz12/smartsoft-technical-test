@@ -1,5 +1,7 @@
 <div class="file-change__container">
-    <p>Name_of_the_file.csv</p>
+
+    <!-- TODO: Optimize this -->
+    <p>{{fileData[0]!}}</p>
     <app-primary-btn text="Change File" [small]="true" (onClickFunction)="newFile()"></app-primary-btn>
 </div>
 <section class='results'>
@@ -7,29 +9,30 @@
     <div class="data__container">
         <div>
             <h2>{{ 'Most recent date' | uppercase }}</h2>
-            <h3 class="date">{{'4/27/2021' | date}}</h3>
+             <!-- TODO: Optimize this -->
+            <h3 class="date">{{fileData[1] | date}}</h3>
         </div>
         
         <div class="answers__container">
             <p class="question">State with the largest accumulated to date.</p>
             <div class="information__container">
-                <p class="state">Massachusetts</p>
+                <p class="state">{{data[maxDeathsIndex].name}}</p>
                 <div class="deaths__container">
-                    <p>50000</p>
+                    <p>{{data[maxDeathsIndex].deaths}}</p>
                     <p>Deaths</p>
                 </div>
             </div>
             <p class="question">State with the lowest accumulated to date.</p>
             <div class="information__container">
-                <p class="state">Name State</p>
+                <p class="state">{{data[minDeathsIndex].name}}</p>
                 <div class="deaths__container">
-                    <p>50000</p>
+                    <p>{{data[minDeathsIndex].deaths}}</p>
                     <p>Deaths</p>
                 </div>
             </div>
             <p class="question">{{'most affected state' | uppercase}}</p>
             <div class="state-affected__container">         
-                <p>Name State</p>
+                <p class="state">{{data[mostAffectedState].name}}</p>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt velit architecto magnam temporibus, quos nostrum consectetur pariatur quaerat. Ipsam animi nihil repellendus dicta beatae.</p>
             </div>
         </div>

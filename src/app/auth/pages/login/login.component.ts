@@ -18,7 +18,7 @@ export class LoginComponent {
   myForm: FormGroup = this.fb.group({
 
     // TODO: Erase all these values;
-    username: ['1234567890', [Validators.required]],
+    username: ['Santimartz', [Validators.required]],
     password: ['1234567890', [Validators.required, Validators.minLength(6)]],
   })
 
