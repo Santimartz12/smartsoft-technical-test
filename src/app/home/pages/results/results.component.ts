@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { State } from 'src/app/interfaces/state.interfaces';
 import { DataService } from 'src/app/shared/services/data.service';
 
 @Component({
@@ -8,11 +9,8 @@ import { DataService } from 'src/app/shared/services/data.service';
 })
 export class ResultsComponent implements OnInit {
 
-  data = [];
-  allInfo = [];
-  provinceState: String[] = [];
-  populationCount: number[] = [];
-  deathsCount: number[] = [];
+  data :State[] = [];
+
 
   constructor(
     private dataServices: DataService,
@@ -22,36 +20,8 @@ export class ResultsComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.data = this.dataServices.getData();
-    const lastIndex: number = this.data.length - 1;
-    const lastKey = Object.keys(this.data[lastIndex])[Object.keys(this.data[lastIndex]).length - 1]
-
-
-    this.data.forEach(el => {
-
-      const nameState = el['Province_State'];
-      const deaths = parseInt(el[lastKey]);
-      const population = parseInt(el['Population']);
-
-      if (!this.provinceState.includes(nameState)) {
-        this.provinceState.push(nameState)
-      }
-
-      const index = this.provinceState.indexOf(el['Province_State']);
-
-      if (this.deathsCount[index] == undefined) {
-        this.deathsCount[index] = 0;
-        this.populationCount[index] = 0;
-      }
-
-      this.deathsCount[index] += deaths;
-      this.populationCount[index] += population;
-
-    });
-
-    for(let i = 0; i < this.provinceState.length; i++){
-      console.log(this.provinceState[i],' : ', this.deathsCount[i] ,' : ', this.populationCount[i])
-    }
+    this.data = this.dataServices.getResults();
+    console.log(this.data);
 
   }
 }
