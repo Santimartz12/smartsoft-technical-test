@@ -46,7 +46,12 @@
         <h2>Charts by state</h2>
 
         <div class="graph">
-            <h1>{{data[selectedGraphIndex].name}}</h1>
+            <p>{{data[selectedGraphIndex].name}}</p>
+            <canvas
+                baseChart
+                type="pie"
+                [data]="pieChartData"
+            ></canvas>
         </div>
 
         <div class="states__container">

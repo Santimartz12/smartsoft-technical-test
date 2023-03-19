@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { ChartConfiguration } from 'chart.js';
+import { BaseChartDirective } from 'ng2-charts';
 import { State } from 'src/app/interfaces/state.interfaces';
 import { DataService } from 'src/app/shared/services/data.service';
 import { StorageService } from 'src/app/shared/services/storage.service';
@@ -11,11 +13,27 @@ import { StorageService } from 'src/app/shared/services/storage.service';
 })
 export class ResultsComponent implements OnInit {
 
+  @ViewChild(BaseChartDirective) chart: BaseChartDirective | undefined;
   data :State[] = [];
   maxDeathsIndex : number =  0;
   minDeathsIndex : number =  0;
   mostAffectedState : number =  0;
   selectedGraphIndex: number = 0;
+  
+  pieChartData = {
+    labels: ['Population', 'Deaths'],
+    datasets:[
+      {
+        data: [100, 0],
+        label: 'State',
+        backgroundColor: [
+          '#31bfd1',
+          '#a81a1a'
+        ],
+        borderColor: 'transparent'
+      }
+    ],
+  }
 
   //TODO: Optimize the data upload
   fileData : string[] = [];
@@ -33,6 +51,9 @@ export class ResultsComponent implements OnInit {
     this.data = this.dataServices.getResults();
     this.fileData = JSON.parse(this.stgServices.loadInStorage('fileData'));
     this.sortData();
+
+    this.pieChartData.datasets[0].data = [this.data[this.selectedGraphIndex].population,this.data[this.selectedGraphIndex].deaths]
+
   }
 
   newFile(){
@@ -67,5 +88,7 @@ export class ResultsComponent implements OnInit {
 
   chooseState(index : number){
     this.selectedGraphIndex = index;
+    this.pieChartData.datasets[0].data = [this.data[this.selectedGraphIndex].population,this.data[this.selectedGraphIndex].deaths]
+    this.chart?.update();
   }
 }

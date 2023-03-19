@@ -149,11 +149,19 @@
         .graph {
             margin: 15px;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             width: calc(100% - 30px);
             aspect-ratio: 1/1;
-            background-color: rgb(134, 134, 134);
+
+            p{
+                font-family: $primary__font;
+                font-size: 1.4rem;
+                font-weight: bold;
+                text-align: center;
+            }
+
         }
 
         .states__container {
