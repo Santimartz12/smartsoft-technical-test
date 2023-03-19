@@ -22,14 +22,14 @@ export class LoginComponent {
     password: ['1234567890', [Validators.required, Validators.minLength(6)]],
   })
 
-  dashboardRedirect() {
+  resultsRedirect() {
     if (this.myForm.invalid) {
       this.myForm.markAllAsTouched();
       return;
     }
 
     this.authServices.loginUser(this.myForm.controls['username'].value)
-    this.router.navigate(['dashboard']);
+    this.router.navigate(['results']);
   }
 
   validateInput(field: String) {

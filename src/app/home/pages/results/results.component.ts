@@ -15,6 +15,7 @@ export class ResultsComponent implements OnInit {
   maxDeathsIndex : number =  0;
   minDeathsIndex : number =  0;
   mostAffectedState : number =  0;
+  selectedGraphIndex: number = 0;
 
   //TODO: Optimize the data upload
   fileData : string[] = [];
@@ -64,4 +65,7 @@ export class ResultsComponent implements OnInit {
     })
   }
 
+  chooseState(index : number){
+    this.selectedGraphIndex = index;
+  }
 }

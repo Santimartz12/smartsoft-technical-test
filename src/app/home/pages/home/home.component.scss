@@ -7,11 +7,9 @@ div {
 
     app-header {
         grid-column: 1 / 2;
-        /* Ubica en la primera columna */
     }
 
     router-outlet {
         grid-column: 2 / 3;
-        /* Ubica en la segunda columna */
     }
 }
