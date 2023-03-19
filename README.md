@@ -1,11 +1,16 @@
-# Smartsoft Technical Test
+# Smartsoft Technical Test v0.1.0
+Project developed by Santiago Martinez Martinez with [Angular 15](https://github.com/angular/angular-cli).
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.1.
+## Project's Objectives
+- Basic login
+- File Upload
+- .csv reader
+- dashboard about 
+- LocalStorage
+- Route Protection
 
-## Principal Characteristics
-- Login
-- Dashboard
-- .csv Reader
-- Guards
-- Graphs
-- And more...
+## Characteristics
+- Mobile First
+- SCSS styles
+- Responsive Design
+- Clean Code

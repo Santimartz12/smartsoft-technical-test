@@ -31,11 +31,14 @@
             <p class="question">{{'most affected state' | uppercase}}</p>
             <div class="state-affected__container">
                 <p class="state">{{data[mostAffectedState].name}}</p>
-                <p>{{data[mostAffectedState].name}} is the most affected state in terms of COVID-19, the main reason is
-                    that this state has the highest percentage between population ({{data[mostAffectedState].population
-                    | number}}) and death count ({{data[mostAffectedState].deaths | number}}), which is a <br>
-                    <span>{{(data[mostAffectedState].deaths * 100) / data[mostAffectedState].population |
-                        number}}%</span></p>
+                <p>
+                    {{data[mostAffectedState].name}} 
+                    is the most affected state in terms of COVID-19, the main reason is that this state has the highest percentage between population 
+                    ({{data[mostAffectedState].population | number}}) 
+                    and death count 
+                    ({{data[mostAffectedState].deaths | number}}), 
+                    which is a <br>
+                    <span>{{(data[mostAffectedState].deaths * 100) / data[mostAffectedState].population | number}}%</span></p>
             </div>
         </div>
     </div>
@@ -49,7 +52,7 @@
             <p>{{data[selectedGraphIndex].name}}</p>
             <canvas
                 baseChart
-                type="pie"
+                type="doughnut"
                 [data]="pieChartData"
             ></canvas>
         </div>

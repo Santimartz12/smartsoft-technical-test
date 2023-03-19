@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { ChartConfiguration } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
 import { State } from 'src/app/interfaces/state.interfaces';
 import { DataService } from 'src/app/shared/services/data.service';
@@ -14,15 +13,15 @@ import { StorageService } from 'src/app/shared/services/storage.service';
 export class ResultsComponent implements OnInit {
 
   @ViewChild(BaseChartDirective) chart: BaseChartDirective | undefined;
-  data :State[] = [];
-  maxDeathsIndex : number =  0;
-  minDeathsIndex : number =  0;
-  mostAffectedState : number =  0;
+  data: State[] = [];
+  maxDeathsIndex: number = 0;
+  minDeathsIndex: number = 0;
+  mostAffectedState: number = 0;
   selectedGraphIndex: number = 0;
-  
+
   pieChartData = {
     labels: ['Population', 'Deaths'],
-    datasets:[
+    datasets: [
       {
         data: [100, 0],
         label: 'State',
@@ -34,9 +33,8 @@ export class ResultsComponent implements OnInit {
       }
     ],
   }
-
-  //TODO: Optimize the data upload
-  fileData : string[] = [];
+  
+  fileData: string[] = [];
 
 
   constructor(
@@ -52,17 +50,17 @@ export class ResultsComponent implements OnInit {
     this.fileData = JSON.parse(this.stgServices.loadInStorage('fileData'));
     this.sortData();
 
-    this.pieChartData.datasets[0].data = [this.data[this.selectedGraphIndex].population,this.data[this.selectedGraphIndex].deaths]
+    this.pieChartData.datasets[0].data = [this.data[this.selectedGraphIndex].population, this.data[this.selectedGraphIndex].deaths]
 
   }
 
-  newFile(){
+  newFile() {
     this.stgServices.clearStorage('results');
     this.stgServices.clearStorage('fileData');
     this.router.navigate(['dashboard']);
   }
 
-  sortData(){
+  sortData() {
     this.data.forEach((state, index) => {
 
       const deaths = state.deaths;
@@ -70,25 +68,25 @@ export class ResultsComponent implements OnInit {
 
 
       const maxState = this.data[this.maxDeathsIndex]
-      if(deaths > maxState.deaths){
+      if (deaths > maxState.deaths) {
         this.maxDeathsIndex = index;
       }
 
       const minState = this.data[this.minDeathsIndex]
-      if(deaths < minState.deaths){
+      if (deaths < minState.deaths) {
         this.minDeathsIndex = index;
       }
 
       const affected = this.data[this.mostAffectedState];
-      if((deaths* 100) / population > (affected.deaths * 100) / affected.population && population > 0){
+      if ((deaths * 100) / population > (affected.deaths * 100) / affected.population && population > 0) {
         this.mostAffectedState = index;
       }
     })
   }
 
-  chooseState(index : number){
+  chooseState(index: number) {
     this.selectedGraphIndex = index;
-    this.pieChartData.datasets[0].data = [this.data[this.selectedGraphIndex].population,this.data[this.selectedGraphIndex].deaths]
+    this.pieChartData.datasets[0].data = [this.data[this.selectedGraphIndex].population, this.data[this.selectedGraphIndex].deaths]
     this.chart?.update();
   }
 }

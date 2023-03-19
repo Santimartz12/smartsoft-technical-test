@@ -31,8 +31,6 @@ export class DataService {
       const json = await this.csvToJson(csvData);
       this._data = json;
       this.processResults();
-
-      //TODO: Join all the data in a single Array (lastKey, fileName, results)
       const fileData = [file.name, this._lastKey];
       
       this.stgService.saveInStorage('fileData', JSON.stringify(fileData));
